@@ -6,7 +6,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.compose import ColumnTransformer
-
+import pickle
 """##1. Data Loading (5 Marks)"""
 
 
@@ -165,3 +165,8 @@ print(f"Best Model MAE: {mean_absolute_error(y_test, y_pred):.4f}")
 print(f"Best Model MSE: {mean_squared_error(y_test, y_pred):.4f}")
 print(f"Best Model RMSE: {np.sqrt(mean_squared_error(y_test, y_pred)):.4f}")
 print(f"Best Model R2: {r2_score(y_test, y_pred):.4f}")
+
+# Save the best model
+with open('best_insurance_model.pkl', 'wb') as f:
+    pickle.dump(best_model, f)
+print("Best model saved as 'insurance_model.pkl'")
